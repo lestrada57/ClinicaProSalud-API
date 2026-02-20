@@ -41,7 +41,7 @@ public class Usuario {
         fechaActualizacion = LocalDateTime.now();
         if (activo == null) activo = true;
     }
-
+    //hola
     @PreUpdate
     protected void onUpdate() {
         fechaActualizacion = LocalDateTime.now();
