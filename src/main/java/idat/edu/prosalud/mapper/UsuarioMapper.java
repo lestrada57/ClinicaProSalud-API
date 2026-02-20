@@ -1,18 +1,16 @@
 package idat.edu.prosalud.mapper;
 
-import idat.edu.prosalud.dto.request.UsuarioRequestDTO;
-import idat.edu.prosalud.dto.response.UsuarioResponseDTO;
+import idat.edu.prosalud.dto.UsuarioDTO;
 import idat.edu.prosalud.entity.Usuario;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")
 public interface UsuarioMapper {
 
-    Usuario toEntity(UsuarioRequestDTO dto);
+    Usuario toEntity(UsuarioDTO dto);
 
-    UsuarioResponseDTO toResponseDTO(Usuario entity);
+    UsuarioDTO toDTO(Usuario entity);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateEntityFromDTO(UsuarioRequestDTO dto, @MappingTarget Usuario entity);
+    void updateEntityFromDTO(UsuarioDTO dto, @MappingTarget Usuario entity);
 }
-

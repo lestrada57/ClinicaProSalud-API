@@ -5,12 +5,7 @@ import lombok.*;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "horarios_medicos", indexes = {
-        @Index(name = "idx_horarios_medico_id",  columnList = "medico_id"),
-        @Index(name = "idx_horarios_dia_semana", columnList = "dia_semana"),
-        @UniqueConstraint(name = "uq_horario_medico_dia_hora",
-                columnNames = {"medico_id", "dia_semana", "hora_inicio"})
-})
+@Table(name = "horarios_medicos")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class HorarioMedico {
 
@@ -31,7 +26,7 @@ public class HorarioMedico {
     @Column(name = "hora_fin", nullable = false)
     private LocalTime horaFin;
 
-    @Column(nullable = false, columnDefinition = "BIT DEFAULT 1")
+    @Column(nullable = false)
     private Boolean activo;
 
     @PrePersist

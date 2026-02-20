@@ -6,12 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "consultas", indexes = {
-        @Index(name = "idx_consultas_cita_id",        columnList = "cita_id"),
-        @Index(name = "idx_consultas_paciente_id",    columnList = "paciente_id"),
-        @Index(name = "idx_consultas_medico_id",      columnList = "medico_id"),
-        @Index(name = "idx_consultas_fecha_consulta", columnList = "fecha_consulta")
-})
+@Table(name = "consultas")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Consulta {
 
@@ -61,8 +56,7 @@ public class Consulta {
     @Column(columnDefinition = "TEXT")
     private String recomendaciones;
 
-    @Column(name = "fecha_consulta", nullable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "fecha_consulta", nullable = false)
     private LocalDateTime fechaConsulta;
 
     @PrePersist

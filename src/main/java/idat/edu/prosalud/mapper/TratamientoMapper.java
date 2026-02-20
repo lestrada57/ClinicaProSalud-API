@@ -1,7 +1,6 @@
 package idat.edu.prosalud.mapper;
 
-import idat.edu.prosalud.dto.request.TratamientoRequestDTO;
-import idat.edu.prosalud.dto.response.TratamientoResponseDTO;
+import idat.edu.prosalud.dto.TratamientoDTO;
 import idat.edu.prosalud.entity.Tratamiento;
 import org.mapstruct.*;
 
@@ -9,13 +8,12 @@ import org.mapstruct.*;
 public interface TratamientoMapper {
 
     @Mapping(target = "consulta", ignore = true)
-    Tratamiento toEntity(TratamientoRequestDTO dto);
+    Tratamiento toEntity(TratamientoDTO dto);
 
     @Mapping(source = "consulta.id", target = "consultaId")
-    TratamientoResponseDTO toResponseDTO(Tratamiento entity);
+    TratamientoDTO toDTO(Tratamiento entity);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "consulta", ignore = true)
-    void updateEntityFromDTO(TratamientoRequestDTO dto, @MappingTarget Tratamiento entity);
+    void updateEntityFromDTO(TratamientoDTO dto, @MappingTarget Tratamiento entity);
 }
-

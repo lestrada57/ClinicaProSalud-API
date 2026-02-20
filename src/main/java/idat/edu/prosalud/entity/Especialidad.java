@@ -1,27 +1,24 @@
 package idat.edu.prosalud.entity;
-}
-    }
-        if (activo == null) activo = true;
-    protected void onCreate() {
-    @PrePersist
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Table(name = "especialidades")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+public class Especialidad {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 150, nullable = false)
+    private String nombre;
 
     private Boolean activo;
-    @Column(columnDefinition = "BIT DEFAULT 1")
 
-    private String nombre;
-    @Column(length = 150, nullable = false)
-
-    private Long id;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-
-public class Especialidad {
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
-@Table(name = "especialidades")
-@Entity
-
-import java.time.LocalDateTime;
-import lombok.*;
-import jakarta.persistence.*;
-
-
+    @PrePersist
+    protected void onCreate() {
+        if (activo == null) activo = true;
+    }
+}

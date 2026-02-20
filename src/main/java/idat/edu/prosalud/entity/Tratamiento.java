@@ -6,10 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tratamientos", indexes = {
-        @Index(name = "idx_tratamientos_consulta_id",   columnList = "consulta_id"),
-        @Index(name = "idx_tratamientos_fecha_inicio",  columnList = "fecha_inicio")
-})
+@Table(name = "tratamientos")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Tratamiento {
 
@@ -36,11 +33,10 @@ public class Tratamiento {
     @Column(length = 50)
     private String tipo;
 
-    @Column(nullable = false, columnDefinition = "BIT DEFAULT 1")
+    @Column(nullable = false)
     private Boolean activo;
 
-    @Column(name = "fecha_creacion", nullable = false, updatable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
 
     @PrePersist

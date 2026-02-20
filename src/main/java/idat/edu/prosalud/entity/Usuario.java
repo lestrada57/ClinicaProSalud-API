@@ -5,11 +5,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "usuarios", indexes = {
-        @Index(name = "idx_usuarios_username", columnList = "username"),
-        @Index(name = "idx_usuarios_email",    columnList = "email"),
-        @Index(name = "idx_usuarios_role",     columnList = "role")
-})
+@Table(name = "usuarios")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Usuario {
 
@@ -29,15 +25,14 @@ public class Usuario {
     @Column(length = 20, nullable = false)
     private String role;
 
-    @Column(nullable = false, columnDefinition = "BIT DEFAULT 1")
+    @Column(nullable = false)
     private Boolean activo;
 
     @Column(name = "fecha_creacion", nullable = false,
-            updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+            updatable = false)
     private LocalDateTime fechaCreacion;
 
-    @Column(name = "fecha_actualizacion",
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "fecha_actualizacion", nullable = false)
     private LocalDateTime fechaActualizacion;
 
     @PrePersist

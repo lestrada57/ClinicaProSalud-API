@@ -7,14 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "citas", indexes = {
-        @Index(name = "idx_citas_paciente_id", columnList = "paciente_id"),
-        @Index(name = "idx_citas_medico_id",   columnList = "medico_id"),
-        @Index(name = "idx_citas_fecha",       columnList = "fecha"),
-        @Index(name = "idx_citas_estado",      columnList = "estado"),
-        @UniqueConstraint(name = "uq_cita_medico_fecha_hora",
-                columnNames = {"medico_id", "fecha", "hora_inicio"})
-})
+@Table(name = "citas")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Cita {
 
@@ -59,12 +52,10 @@ public class Cita {
     @JoinColumn(name = "recepcionista_atencion_id")
     private Recepcionista recepcionistaAtencion;
 
-    @Column(name = "fecha_creacion", nullable = false, updatable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
 
-    @Column(name = "fecha_actualizacion",
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "fecha_actualizacion")
     private LocalDateTime fechaActualizacion;
 
     @PrePersist

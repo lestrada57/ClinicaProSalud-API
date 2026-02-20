@@ -6,11 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "pacientes", indexes = {
-        @Index(name = "idx_pacientes_dni",        columnList = "dni"),
-        @Index(name = "idx_pacientes_usuario_id", columnList = "usuario_id"),
-        @Index(name = "idx_pacientes_nombre",     columnList = "apellidos, nombres")
-})
+@Table(name = "pacientes")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Paciente {
 
@@ -52,11 +48,10 @@ public class Paciente {
     @Column(name = "telefono_emergencia", length = 20)
     private String telefonoEmergencia;
 
-    @Column(nullable = false, columnDefinition = "BIT DEFAULT 1")
+    @Column(nullable = false)
     private Boolean activo;
 
-    @Column(name = "fecha_registro", nullable = false, updatable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "fecha_registro", nullable = false, updatable = false)
     private LocalDateTime fechaRegistro;
 
     @PrePersist

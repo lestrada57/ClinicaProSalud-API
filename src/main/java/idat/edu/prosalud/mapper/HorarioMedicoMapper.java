@@ -1,7 +1,6 @@
 package idat.edu.prosalud.mapper;
 
-import idat.edu.prosalud.dto.request.HorarioMedicoRequestDTO;
-import idat.edu.prosalud.dto.response.HorarioMedicoResponseDTO;
+import idat.edu.prosalud.dto.HorarioMedicoDTO;
 import idat.edu.prosalud.entity.HorarioMedico;
 import org.mapstruct.*;
 
@@ -9,15 +8,12 @@ import org.mapstruct.*;
 public interface HorarioMedicoMapper {
 
     @Mapping(target = "medico", ignore = true)
-    HorarioMedico toEntity(HorarioMedicoRequestDTO dto);
+    HorarioMedico toEntity(HorarioMedicoDTO dto);
 
-    @Mapping(source = "medico.id",       target = "medicoId")
-    @Mapping(source = "medico.nombres",  target = "medicoNombres")
-    @Mapping(source = "medico.apellidos",target = "medicoApellidos")
-    HorarioMedicoResponseDTO toResponseDTO(HorarioMedico entity);
+    @Mapping(source = "medico.id", target = "medicoId")
+    HorarioMedicoDTO toDTO(HorarioMedico entity);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "medico", ignore = true)
-    void updateEntityFromDTO(HorarioMedicoRequestDTO dto, @MappingTarget HorarioMedico entity);
+    void updateEntityFromDTO(HorarioMedicoDTO dto, @MappingTarget HorarioMedico entity);
 }
-
