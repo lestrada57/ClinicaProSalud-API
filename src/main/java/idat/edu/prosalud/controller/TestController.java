@@ -16,7 +16,7 @@ public class TestController {
     @GetMapping("/saludo")
     public ResponseEntity<Map<String, String>> saludo(@AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(Map.of(
-                "mensaje", "¡Hola, " + userDetails.getUsername() + "! Tu JWT es válido ✅",
+                "mensaje", "Hola, " + userDetails.getUsername() + " Tu JWT es válido",
                 "rol", userDetails.getAuthorities().iterator().next().getAuthority()
         ));
     }
