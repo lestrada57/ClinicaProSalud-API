@@ -7,6 +7,6 @@ public class RegisterRequest {
     private String username;
     private String password;
     private String email;
-    private String role; // ADMIN, MEDICO, RECEPCIONISTA, PACIENTE
+    private String role;
 }
 
